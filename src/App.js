@@ -1,26 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import NameComponent from './components/NameComponent'
+class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      un: 'kaushik'};
+    }
+  
+  componentDidMount()
+    {
+        console.log("mounted");
+    }
+  
+  clickHandle() {
+    this.setState({
+      un: 'kaushik brahmin king'
+    });
+  }
+  
+render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     <p style={{fontSize:'50px'}} className="text-large">hi</p>
+   <NameComponent un='shivansh kaushik' />
+   {this.state.un}
+   <button onClick={this.clickHandle.bind(this)}>clickMe</button>
     </div>
   );
 }
-
+}
 export default App;
